@@ -11,6 +11,9 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>Main Page</h1>
+<h1>Main Page</h1>
+<h2><a href = "/next">Next</a></h2>
+<h3>${data}</h3>
+<h3>${num}</h3>
 </body>
 </html>

@@ -11,4 +11,4 @@ spring:
       suffix: .jsp
 logging:
   level:
-    root: info
+    root: error

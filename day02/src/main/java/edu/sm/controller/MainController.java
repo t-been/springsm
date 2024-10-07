@@ -16,7 +16,6 @@ public class MainController {
         model.addAttribute("data", "Hello world");
         model.addAttribute("num", 10000);
 
-
         return "index";
     }
 }
