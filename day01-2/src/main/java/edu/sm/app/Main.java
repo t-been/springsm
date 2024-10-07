@@ -3,11 +3,16 @@ package edu.sm.app;
 import edu.sm.cust.service.CustService;
 import edu.sm.dto.Cust;
 import edu.sm.frame.SMService;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        SMService<String, Cust> service = null;
-        service = new CustService();
+
+        ApplicationContext factory =
+                new ClassPathXmlApplicationContext("spring.xml");
+
+        SMService<String, Cust> service = (SMService<String, Cust>) factory.getBean("cservice");
         service.remove("id01");
 
     }

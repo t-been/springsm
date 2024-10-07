@@ -3,9 +3,13 @@ package edu.sm.cust.service;
 import edu.sm.dto.Cust;
 import edu.sm.frame.SMRepository;
 import edu.sm.frame.SMService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("cservice")
 public class CustService implements SMService<String, Cust> {
 
+    @Autowired
     SMRepository<String, Cust> repository;
 
     @Override
