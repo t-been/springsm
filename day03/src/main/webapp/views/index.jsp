@@ -34,9 +34,6 @@
     <li class="nav-item">
         <a class="nav-link" href="<c:url value="/about" /> ">About us</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/chart" /> ">Chart</a>
-    </li>
 <%--    <li class="nav-item">--%>
 <%--        <a class="nav-link disabled" href="#">Disabled</a>--%>
 <%--    </li>--%>
@@ -55,10 +52,10 @@
                 <a class="nav-link" href="<c:url value="/ajax"/> ">AJAX</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/map"/> ">Map</a>
+                <a class="nav-link" href="<c:url value="/map"/> ">MAP</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/chart"/> ">Chart</a>
+                <a class="nav-link" href="<c:url value="/chart"/> ">CHART</a>
             </li>
         </ul>
     </div>
