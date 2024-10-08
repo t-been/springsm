@@ -14,18 +14,18 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/day021" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/day021" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/day03" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/day03" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/day03_1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/day03_1" />
           </set>
         </option>
       </GradleProjectSettings>
