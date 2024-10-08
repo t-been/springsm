@@ -26,17 +26,20 @@
 </div>
 <ul class="nav justify-content-end">
     <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="<c:url value="/login" /> ">Login</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="<c:url value="/register" /> ">Register</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="<c:url value="/about" /> ">About us</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="<c:url value="/chart" /> ">Chart</a>
     </li>
+<%--    <li class="nav-item">--%>
+<%--        <a class="nav-link disabled" href="#">Disabled</a>--%>
+<%--    </li>--%>
 </ul>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand" href="<c:url value="/" /> ">Navbar</a>
@@ -53,6 +56,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/map"/> ">Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<c:url value="/chart"/> ">Chart</a>
             </li>
         </ul>
     </div>
