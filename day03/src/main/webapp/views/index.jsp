@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -39,7 +39,7 @@
     </li>
 </ul>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a class="navbar-brand" href="<c:url value = "/" /> ">Navbar</a>
+    <a class="navbar-brand" href="<c:url value="/" /> ">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,10 +49,10 @@
                 <a class="nav-link" href="<c:url value="/js" /> ">JS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/ajax" /> ">AJAX</a>
+                <a class="nav-link" href="<c:url value="/ajax"/> ">AJAX</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/map" /> ">Map</a>
+                <a class="nav-link" href="<c:url value="/map"/> ">Map</a>
             </li>
         </ul>
     </div>
@@ -61,14 +61,13 @@
 <div class="container" style="margin-top:30px">
     <div class="row">
         <c:choose>
-            <c:when test="${left == null}">
-                <jsp:include page="left.jsp"/>
-            </c:when>
-            <c:otherwise>
-                <jsp:include page="${left}.jsp"/>
-            </c:otherwise>
+          <c:when test="${left == null}">
+              <jsp:include page="left.jsp"/>
+          </c:when>
+          <c:otherwise>
+              <jsp:include page="${left}.jsp"/>
+          </c:otherwise>
         </c:choose>
-
         <c:choose>
             <c:when test="${center == null}">
                 <jsp:include page="center.jsp"/>
