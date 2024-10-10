@@ -49,8 +49,15 @@ public class JsController {
 
     @RequestMapping("js5")
     public String js5(Model model) {
+        model.addAttribute("left", dir + "left");
+        model.addAttribute("center", dir + "js5");
+        return "index";
+    }
+
+    @RequestMapping("js6")
+    public String js6(Model model) {
         model.addAttribute("left", dir+"left");
-        model.addAttribute("center", dir+"js5");
+        model.addAttribute("center", dir+"js6");
         return "index";
     }
 }
