@@ -136,7 +136,7 @@
 
                 <!-- Topbar Search -->
                 <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        class="d-none d-sm-inline-block form-inline mr-auto  my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                                aria-label="Search" aria-describedby="basic-addon2">
@@ -378,15 +378,15 @@
     <script src="<c:url value="/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<c:url value="/js/sb-admin-2.min.js"/>"></script>
+    <script src="<c:url value='/js/sb-admin-2.min.js'/>"></script>
 
     <!-- Page level plugins -->
-    <script src="<c:url value="/vendor/chart.js/Chart.min.js"/>"></script>
+    <script src="<c:url value='/vendor/datatables/jquery.dataTables.min.js'/>"></script>
+    <script src="<c:url value='/vendor/datatables/dataTables.bootstrap4.min.js'/>"></script>
 
     <!-- Page level custom scripts -->
-    <script src="<c:url value="/js/demo/chart-area-demo.js"/>"></script>
-    <script src="<c:url value="/js/demo/chart-pie-demo.js"/>"></script>
-
+    <script src="<c:url value='/js/demo/datatables-demo.js'/>"></script>
+</div>
 </div>
 </body>
 </html>
