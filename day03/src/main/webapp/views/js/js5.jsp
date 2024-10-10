@@ -2,50 +2,52 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
-    function display(datas) {
-        let result = '';
-        $(datas).each(function (index, data) {
-            result += '<tr>';
-            result += '<td>' + data.id + '</td>';
-            result += '<td>' + data.name + '</td>';
-            result += '<td>' + data.age + '</td>';
-            result += '</tr>';
-        });
-        $('#cdata > tbody').html(result);
-    }
+    let js5 = {
+        init:function (){
+            $('#login_form > button').click(()=>{
+                this.check();
+            });
+        },
+        check:function() {
+            let id = $('#id').val();
+            let pwd = $('#pwd').val();
+            if(id == '' || id == null) {
+                alert('ID is Mandatory');
+                $('#id').focus();
+                return;
+            }
+            if(pwd == '' || pwd == null) {
+                alert('Pwd is Mandatory');
+                $('#pwd').focus();
+                return;
+            }
+        },
+        send:function() {
+            // method, action
+            $('#login_form').attr('method', 'post');
+            $('#login_form').attr('action', '/loginimpl');
+            $('#login_form').submit();
+        }
+    };
 
-    function getdata() {
-        let datas = [
-            {'id':'id-1','name':'james1','age':10},
-            {'id':'id-2','name':'james2','age':20},
-            {'id':'id-3','name':'james3','age':30},
-            {'id':'id-4','name':'james4','age':40},
-            {'id':'id-5','name':'james5','age':50}
-        ];
-        display(datas);
-    }
-
-    $(document).ready(function(){
-        $('#btn_get').click(function(){
-            getdata();
-        });
+    $(document).ready(function() {
+        js5.init();
     });
 </script>
 
 <div class="col-sm-10">
   <h2>JS5 Page</h2>
-    <button id="btn_get">Get Data</button>
-  <h5>Title description, Sep 2, 2017</h5>
-    <table class="table" id = "cdata">
-        <thead class="thead-dark">
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Age</th>
-        </tr>
-        </thead>
-        <tbody>
+    <form id = 'login_form'>
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="text" class="form-control" placeholder="Enter ID" id="id" name = "id">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" placeholder="Enter password" id="pwd" name = "pwd">
+        </div>
 
-        </tbody>
-    </table>
+        <button type="button" class="btn btn-primary">Submit</button>
+    </form>
+
 </div>

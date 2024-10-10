@@ -2,34 +2,39 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
-    function display(datas) {
-        let result = '';
-        $(datas).each(function (index, data) {
-            result += '<tr>';
-            result += '<td>' + data.id + '</td>';
-            result += '<td>' + data.name + '</td>';
-            result += '<td>' + data.age + '</td>';
-            result += '</tr>';
-        });
-        $('#cdata > tbody').html(result);
-    }
-
-    function getdata() {
-        let datas = [
-            {'id':'id-1','name':'james1','age':10},
-            {'id':'id-2','name':'james2','age':20},
-            {'id':'id-3','name':'james3','age':30},
-            {'id':'id-4','name':'james4','age':40},
-            {'id':'id-5','name':'james5','age':50}
-        ];
-        display(datas);
-    }
-
-    $(document).ready(function(){
-        $('#btn_get').click(function(){
-            getdata();
-        });
+    let js4 = {
+        data:null,
+        init:function (){
+            $('#btn_get').click(()=>{
+                this.getdata();
+            });
+        },
+        getdata:function (){
+            let datas = [
+                {'id':'id-1','name':'james1','age':10},
+                {'id':'id-2','name':'james2','age':20},
+                {'id':'id-3','name':'james3','age':30},
+                {'id':'id-4','name':'james4','age':40},
+                {'id':'id-5','name':'james5','age':50}
+            ];
+            this.display(datas);
+        },
+        display:function(datas) {
+            let result = '';
+            $(datas).each(function (index, data) {
+                result += '<tr>';
+                result += '<td>' + data.id + '</td>';
+                result += '<td>' + data.name + '</td>';
+                result += '<td>' + data.age + '</td>';
+                result += '</tr>';
+            });
+            $('#cdata > tbody').html(result);
+        }
+    };
+    $(document).ready(function (){
+        js4.init();
     });
+
 </script>
 
 <div class="col-sm-10">
