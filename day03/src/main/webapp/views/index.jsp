@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="<c:url value="/js/index.js"/> "></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -26,17 +27,17 @@
 </div>
 <ul class="nav justify-content-end">
     <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/login" /> ">Login</a>
+        <a class="nav-link" href="<c:url value="/login"/> ">Login</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/register" /> ">Register</a>
+        <a class="nav-link" href="<c:url value="/register"/>">Register</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/about" /> ">About us</a>
+        <a class="nav-link" href="<c:url value="/about"/>">About us</a>
     </li>
-<%--    <li class="nav-item">--%>
-<%--        <a class="nav-link disabled" href="#">Disabled</a>--%>
-<%--    </li>--%>
+    <%--    <li class="nav-item">--%>
+    <%--        <a class="nav-link disabled" href="#">Disabled</a>--%>
+    <%--    </li>--%>
 </ul>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand" href="<c:url value="/" /> ">Navbar</a>
@@ -52,10 +53,10 @@
                 <a class="nav-link" href="<c:url value="/ajax"/> ">AJAX</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/map"/> ">MAP</a>
+                <a class="nav-link" href="<c:url value="/map"/> ">Map</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/chart"/> ">CHART</a>
+                <a class="nav-link" href="<c:url value="/chart"/> ">Chart</a>
             </li>
         </ul>
     </div>
@@ -64,12 +65,12 @@
 <div class="container" style="margin-top:30px">
     <div class="row">
         <c:choose>
-          <c:when test="${left == null}">
-              <jsp:include page="left.jsp"/>
-          </c:when>
-          <c:otherwise>
-              <jsp:include page="${left}.jsp"/>
-          </c:otherwise>
+            <c:when test="${left == null}">
+                <jsp:include page="left.jsp"/>
+            </c:when>
+            <c:otherwise>
+                <jsp:include page="${left}.jsp"/>
+            </c:otherwise>
         </c:choose>
         <c:choose>
             <c:when test="${center == null}">
