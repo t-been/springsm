@@ -3,6 +3,7 @@ package edu.sm.dto;
 import lombok.Builder;
 import lombok.Data;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @Builder
@@ -11,6 +12,6 @@ public class Item {
     private String name;
     private int price;
     private String imgname;
-    private LocalDate regdate;
+    private Date regdate;
 
 }
