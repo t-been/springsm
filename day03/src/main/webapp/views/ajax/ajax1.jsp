@@ -23,11 +23,9 @@
         ajax1.init();
     });
 </script>
-
 <div class="col-sm-10">
 
   <h2>AJAX1 Page</h2>
   <h5>Title description, Sep 2, 2017</h5>
     <h1 id = "ctime"></h1>
-
  </div>
