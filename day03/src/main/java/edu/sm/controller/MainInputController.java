@@ -21,19 +21,21 @@ public class MainInputController {
 
     // 로그인 처리 메소드
     @RequestMapping("/loginimpl")
-    public String loginimpl(Model model, @RequestParam("id") String id, @RequestParam("pwd") String pwd,
+    public String loginimpl(Model model,
+                            @RequestParam("id") String id,
+                            @RequestParam("pwd") String pwd,
                             HttpSession session) {
-        log.info("id : " + id);
-        log.info("pwd : " + pwd);
-
-        // 로그인 성공 여부에 따른 이동 처리
-        if(id.equals("aaa") && pwd.equals("111")) {
-            session.setAttribute("loginid", id); // 세션에 로그인 정보 저장
-            return "redirect:/"; // 로그인 성공 시 메인 페이지로 리다이렉트
-        } else {
-            model.addAttribute("center", "loginfail"); // 로그인 실패 시 실패 뷰를 center에 추가
-            return "index"; // 로그인 실패 시 index 뷰 반환 (로그인 실패 화면)
+        log.info("ID:"+id);
+        log.info("PWD:"+pwd);
+        // aaa, 111
+        String next = "redirect:/";
+        if(id.equals("aaa") && pwd.equals("111")){
+            session.setAttribute("loginid", id);
+        }else{
+            model.addAttribute("center","loginfail");
+            next = "index";
         }
+        return next;
     }
 
     // 회원가입 처리 메소드
