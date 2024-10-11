@@ -76,25 +76,34 @@ let js6 = {
 
         // ID 필수 체크
         if (id == '' || id == null) {
-            alert('Id is Mandatory');
+            alert('ID를 입력하세요.');
             $('#id').focus();
             return;
         }
+        let idPattern = /^[a-zA-Z]+$/;
+        if (!idPattern.test(id)) {
+            $('#id')[0].setCustomValidity('ID는 영어만 입력하실 수 있습니다.');
+            $('#id')[0].reportValidity(); // 브라우저의 오류 메시지를 표시
+            $('#id').focus();
+            return;
+        } else {
+            $('#id')[0].setCustomValidity(''); // 유효한 경우 오류 메시지 해제
+        }
         // 비밀번호 필수 체크
         if (pwd == '' || pwd == null) {
-            alert('Password is Mandatory');
+            alert('비밀번호를 입력하세요');
             $('#pwd').focus();
             return;
         }
         // 비밀번호 확인 필수 체크
         if (confirmPwd == '' || confirmPwd == null) {
-            alert('Confirm Password is Mandatory');
+            alert('비밀번호를 다시 입력하세요.');
             $('#confirmPwd').focus();
             return;
         }
         // 비밀번호 일치 확인
         if (pwd !== confirmPwd) {
-            $('#confirmPwd')[0].setCustomValidity('Passwords do not match');
+            $('#confirmPwd')[0].setCustomValidity('비밀번호가 일치하지 않습니다.');
             $('#confirmPwd')[0].reportValidity(); // 브라우저에 오류 표시
             $('#confirmPwd').focus();
             return;
@@ -103,18 +112,18 @@ let js6 = {
         }
         // 이름 필수 체크
         if (name == '' || name == null) {
-            alert('Name is Mandatory');
+            alert('이름을 입력하세요.');
             $('#name').focus();
             return;
         }
         // 이메일 필수 및 형식 체크
         if (email == '' || email == null) {
-            alert('Email is Mandatory');
+            alert('이메일을 입력하세요.');
             $('#email').focus();
             return;
         }
         if (!emailPattern.test(email)) {
-            $('#email')[0].setCustomValidity('Please enter a valid email address');
+            $('#email')[0].setCustomValidity('올바른 이메일 형식이 아닙니다.');
             $('#email')[0].reportValidity(); // 브라우저에 오류 표시
             $('#email').focus();
             return;

@@ -25,5 +25,4 @@ public class MainInputController {
         log.info("email : " + email);
         return "index";
     }
-
 }
