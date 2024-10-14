@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Slf4j
@@ -37,6 +38,14 @@ public class MapController {
     public String map3(Model model) {
         model.addAttribute("left", dir+"left");
         model.addAttribute("center", dir+"map3");
+        return "index";
+    }
+
+    @RequestMapping("/go")
+    public String go(Model model, @RequestParam("target") int target) {
+        model.addAttribute("target", target);
+        model.addAttribute("left", dir+"left");
+        model.addAttribute("center", dir+"go");
         return "index";
     }
 }

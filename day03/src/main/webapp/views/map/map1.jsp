@@ -186,7 +186,6 @@
 </script>
 
 <div class="col-sm-10">
-
   <h2>Map1 Page</h2>
     <button id = "sbtn">Seoul</button>
     <button id = "bbtn">Busan</button>
