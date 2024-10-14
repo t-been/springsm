@@ -3,6 +3,7 @@ package edu.sm.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,6 +18,18 @@ public class AjaxRestController {
         // {'ctime': '2023-12-12'}
         LocalDateTime now = LocalDateTime.now();
         obj.put("ctime", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(now));
+
+        return obj;
+    }
+
+    @RequestMapping("/checkid")
+    public Object checkid(@RequestParam("rid") String id) {
+        JSONObject obj = new JSONObject();
+        if(id.equals("qqqq") || id.equals("qqqqq")) {
+            obj.put("result","1");
+        } else{
+            obj.put("result","0");
+        }
 
         return obj;
     }

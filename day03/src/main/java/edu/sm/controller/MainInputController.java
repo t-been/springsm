@@ -13,7 +13,7 @@ public class MainInputController {
     // 로그아웃 처리 메소드
     @RequestMapping("/logoutimpl")
     public String logoutimpl(HttpSession session, Model model) {
-        if(session != null) {
+        if (session != null) {
             session.invalidate(); // 세션 정보 삭제
         }
         return "redirect:/"; // 로그아웃 후 메인 페이지로 리다이렉트
@@ -25,14 +25,14 @@ public class MainInputController {
                             @RequestParam("id") String id,
                             @RequestParam("pwd") String pwd,
                             HttpSession session) {
-        log.info("ID:"+id);
-        log.info("PWD:"+pwd);
+        log.info("ID:" + id);
+        log.info("PWD:" + pwd);
         // aaa, 111
         String next = "redirect:/";
-        if(id.equals("aaa") && pwd.equals("111")){
+        if (id.equals("aaa") && pwd.equals("111")) {
             session.setAttribute("loginid", id);
-        }else{
-            model.addAttribute("center","loginfail");
+        } else {
+            model.addAttribute("center", "loginfail");
             next = "index";
         }
         return next;
@@ -48,4 +48,21 @@ public class MainInputController {
         log.info("email : " + email);
         return "index"; // 회원가입 후 index 페이지로 이동
     }
+
+    @RequestMapping("/registerimpl")
+    public String registerimpl(Model model,
+                               @RequestParam("id") String id,
+                               @RequestParam("pwd") String pwd,
+                               @RequestParam("name") String name,
+                               HttpSession session) {
+        log.info("ID :" + id);
+        log.info("PWD :" + pwd);
+        log.info("NAME :" + name);
+        session.setAttribute("loginid", id);
+        model.addAttribute("center", "registerok");
+        model.addAttribute("id", id);
+
+        return "index";
+    }
 }
+
