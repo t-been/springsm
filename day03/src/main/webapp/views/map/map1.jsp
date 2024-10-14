@@ -11,6 +11,7 @@
 <script>
     let map1 = {
         map:null,
+        mrker:null,
         init:function (){
             this.makemap();
             $('#sbtn').click(()=>{
@@ -40,42 +41,65 @@
 
             // 마커가 표시될 위치입니다
             let markerPosition  = new kakao.maps.LatLng(36.799117, 127.074977);
-            let marker = new kakao.maps.Marker({ position: markerPosition });
-            marker.setMap(this.map);
+            this.marker = new kakao.maps.Marker({
+              position: markerPosition
+            });
+            this.marker.setMap(this.map);
 
             //인포윈도우 표시 위치입니다
-            let iwContent = '<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>';
+            let iwContent = '<div>Hello World!</div><img style="width:100px;" src="<c:url value="/img/sm.jpg"/> ">';
             let iwPosition = new kakao.maps.LatLng(36.799117, 127.074977); //인포윈도우 표시 위치입니다
             let infowindow = new kakao.maps.InfoWindow({
                 position : iwPosition,
                 content : iwContent
             });
-            infowindow.open(this.map, marker);
+            kakao.maps.event.addListener(this.marker, 'mouseover', overHandler(this.map, this.marker, infowindow));
+            kakao.maps.event.addListener(this.marker, 'mouseout', outHandler(infowindow));
+            kakao.maps.event.addListener(this.marker, 'click', clickHandler('http://sunmoon.ac.kr'));
+
+            function clickHandler(target) {
+                return function (){
+                  location.href = target;
+                };
+            };
+            function overHandler(map, marker, infowindow) {
+                return function (){
+                    infowindow.open(map, marker);
+                };
+            };
+            function outHandler(infowindow) {
+                return function (){
+                    infowindow.close();
+                };
+            };
         },
 
         goseoul:function (){
-            let moveLatLon = new kakao.maps.LatLng(37.551312, 126.988242);
-            this.map.panTo(moveLatLon);
+          this.marker.setMap(null);
+          let moveLatLon = new kakao.maps.LatLng(37.551312, 126.988242);
+          this.map.panTo(moveLatLon);
 
-            let markerPosition  = new kakao.maps.LatLng(37.551312, 126.988242);
-            let marker = new kakao.maps.Marker({ position: markerPosition });
-            marker.setMap(this.map);
+          let markerPosition  = new kakao.maps.LatLng(37.551312, 126.988242);
+          this.marker = new kakao.maps.Marker({ position: markerPosition });
+          this.marker.setMap(this.map);
         },
         gobusan:function (){
-            let moveLatLon = new kakao.maps.LatLng(35.160078, 129.160036);
-            this.map.panTo(moveLatLon);
+          this.marker.setMap(null);
+          let moveLatLon = new kakao.maps.LatLng(35.160078, 129.160036);
+          this.map.panTo(moveLatLon);
 
-            let markerPosition  = new kakao.maps.LatLng(35.160078, 129.160036);
-            let marker = new kakao.maps.Marker({ position: markerPosition });
-            marker.setMap(this.map);
+          let markerPosition  = new kakao.maps.LatLng(35.160078, 129.160036);
+          this.marker = new kakao.maps.Marker({ position: markerPosition });
+          this.marker.setMap(this.map);
         },
         gojeju:function (){
-            let moveLatLon = new kakao.maps.LatLng(33.504316, 126.519839);
-            this.map.panTo(moveLatLon);
+          this.marker.setMap(null);
+          let moveLatLon = new kakao.maps.LatLng(33.504316, 126.519839);
+          this.map.panTo(moveLatLon);
 
-            let markerPosition  = new kakao.maps.LatLng(33.504316, 126.519839);
-            let marker = new kakao.maps.Marker({ position: markerPosition });
-            marker.setMap(this.map);
+          let markerPosition  = new kakao.maps.LatLng(33.504316, 126.519839);
+          this.marker = new kakao.maps.Marker({ position: markerPosition });
+          this.marker.setMap(this.map);
         }
     };
     $(function (){
