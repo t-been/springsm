@@ -82,6 +82,32 @@
           let markerPosition  = new kakao.maps.LatLng(37.551312, 126.988242);
           this.marker = new kakao.maps.Marker({ position: markerPosition });
           this.marker.setMap(this.map);
+
+          let iwContent = '<div>Hello World!</div><img style="width:100px;" src="<c:url value="/img/ns.jpg"/> ">';
+          let iwPosition = new kakao.maps.LatLng(37.551312, 126.988242); //인포윈도우 표시 위치입니다
+          let infowindow = new kakao.maps.InfoWindow({
+            position : iwPosition,
+            content : iwContent
+          });
+          kakao.maps.event.addListener(this.marker, 'mouseover', overHandler(this.map, this.marker, infowindow));
+          kakao.maps.event.addListener(this.marker, 'mouseout', outHandler(infowindow));
+          kakao.maps.event.addListener(this.marker, 'click', clickHandler('/js/js1'));
+
+          function clickHandler(target) {
+            return function (){
+              location.href = target;
+            };
+          };
+          function overHandler(map, marker, infowindow) {
+            return function (){
+              infowindow.open(map, marker);
+            };
+          };
+          function outHandler(infowindow) {
+            return function (){
+              infowindow.close();
+            };
+          };
         },
         gobusan:function (){
           this.marker.setMap(null);
@@ -91,6 +117,32 @@
           let markerPosition  = new kakao.maps.LatLng(35.160078, 129.160036);
           this.marker = new kakao.maps.Marker({ position: markerPosition });
           this.marker.setMap(this.map);
+
+          let iwContent = '<div>Hello World!</div><img style="width:100px;" src="<c:url value="/img/bs.jpg"/> ">';
+          let iwPosition = new kakao.maps.LatLng(35.160078, 129.160036); //인포윈도우 표시 위치입니다
+          let infowindow = new kakao.maps.InfoWindow({
+            position : iwPosition,
+            content : iwContent
+          });
+          kakao.maps.event.addListener(this.marker, 'mouseover', overHandler(this.map, this.marker, infowindow));
+          kakao.maps.event.addListener(this.marker, 'mouseout', outHandler(infowindow));
+          kakao.maps.event.addListener(this.marker, 'click', clickHandler('/js/js2'));
+
+          function clickHandler(target) {
+            return function (){
+              location.href = target;
+            };
+          };
+          function overHandler(map, marker, infowindow) {
+            return function (){
+              infowindow.open(map, marker);
+            };
+          };
+          function outHandler(infowindow) {
+            return function (){
+              infowindow.close();
+            };
+          };
         },
         gojeju:function (){
           this.marker.setMap(null);
@@ -100,6 +152,32 @@
           let markerPosition  = new kakao.maps.LatLng(33.504316, 126.519839);
           this.marker = new kakao.maps.Marker({ position: markerPosition });
           this.marker.setMap(this.map);
+
+          let iwContent = '<div>Hello World!</div><img style="width:100px;" src="<c:url value="/img/js.jpg"/> ">';
+          let iwPosition = new kakao.maps.LatLng(33.504316, 126.519839); //인포윈도우 표시 위치입니다
+          let infowindow = new kakao.maps.InfoWindow({
+            position : iwPosition,
+            content : iwContent
+          });
+          kakao.maps.event.addListener(this.marker, 'mouseover', overHandler(this.map, this.marker, infowindow));
+          kakao.maps.event.addListener(this.marker, 'mouseout', outHandler(infowindow));
+          kakao.maps.event.addListener(this.marker, 'click', clickHandler('/js/js3'));
+
+          function clickHandler(target) {
+            return function (){
+              location.href = target;
+            };
+          };
+          function overHandler(map, marker, infowindow) {
+            return function (){
+              infowindow.open(map, marker);
+            };
+          };
+          function outHandler(infowindow) {
+            return function (){
+              infowindow.close();
+            };
+          };
         }
     };
     $(function (){
