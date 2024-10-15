@@ -14,6 +14,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <%-- kakaomap API --%>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=032f5780c7e0cf85db70f64b14b971d6"></script>
+    <%-- chart API --%>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
     <style>
         .fakeimg {
