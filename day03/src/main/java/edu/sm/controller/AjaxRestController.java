@@ -1,6 +1,6 @@
 package edu.sm.controller;
 
-import edu.sm.dto.Marker;
+import edu.sm.app.dto.Marker;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;

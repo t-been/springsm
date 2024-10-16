@@ -1,4 +1,4 @@
-package edu.sm.dto;
+package edu.sm.app.dto;
 
 import lombok.Builder;
 import lombok.Data;
