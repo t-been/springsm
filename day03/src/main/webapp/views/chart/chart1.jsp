@@ -11,6 +11,9 @@
     let chart1 = {
         init:function(){
             this.getdata();
+            setInterval(()=>{
+                this.getdata();
+            },5000);
         },
         getdata:function(){
             $.ajax({
