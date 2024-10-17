@@ -18,3 +18,4 @@ app:
   dir:
     imgdir: file:///d:/springsm/imgs/
     logdir: file:///d:/springsm/logs/
+    readlogdir: d:/springsm/logs/
