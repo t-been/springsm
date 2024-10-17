@@ -8,6 +8,9 @@
   }
 </style>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
 <script>
   let chart4 = {
     init: function () {
@@ -23,15 +26,25 @@
         const chart = this,
                 series = chart.series[0];
 
+        // 매 1초마다 서버에서 데이터를 가져와서 차트에 반영
         setInterval(function () {
-          const x = (new Date()).getTime(), // current time
-                  y = Math.random();
+          $.ajax({
+            url: '/iot/chartData', // IoT 데이터를 가져오는 엔드포인트
+            success: function (data) {
+              const x = (new Date()).getTime(), // 현재 시간
+                      y = data[data.length - 1]; // 최신 IoT 데이터
 
-          series.addPoint([x, y], true, true);
-        }, 1000);
+              // 새로운 데이터 포인트를 추가
+              series.addPoint([x, y], true, true);
+            },
+            error: function () {
+              console.error("Failed to fetch IoT data");
+            }
+          });
+        }, 1000); // 1초 간격으로 서버에서 데이터를 가져옴
       };
 
-// Create the initial data
+      // 초기 차트 데이터 설정
       const data = (function () {
         const data = [];
         const time = new Date().getTime();
@@ -39,39 +52,11 @@
         for (let i = -19; i <= 0; i += 1) {
           data.push({
             x: time + i * 1000,
-            y: Math.random()
+            y: Math.random() // 초기에는 랜덤 데이터로 채움, 이후 서버에서 데이터를 갱신
           });
         }
         return data;
       }());
-
-      Highcharts.addEvent(Highcharts.Series, 'addPoint', e => {
-        const point = e.point,
-                series = e.target;
-
-        if (!series.pulse) {
-          series.pulse = series.chart.renderer.circle()
-                  .add(series.markerGroup);
-        }
-
-        setTimeout(() => {
-          series.pulse
-                  .attr({
-                    x: series.xAxis.toPixels(point.x, true),
-                    y: series.yAxis.toPixels(point.y, true),
-                    r: series.options.marker.radius,
-                    opacity: 1,
-                    fill: series.color
-                  })
-                  .animate({
-                    r: 20,
-                    opacity: 0
-                  }, {
-                    duration: 1000
-                  });
-        }, 1);
-      });
-
 
       Highcharts.chart('container', {
         chart: {
@@ -86,20 +71,7 @@
         },
 
         title: {
-          text: 'Live random data'
-        },
-
-        accessibility: {
-          announceNewData: {
-            enabled: true,
-            minAnnounceInterval: 15000,
-            announcementFormatter: function (allSeries, newSeries, newPoint) {
-              if (newPoint) {
-                return 'New point added. Value: ' + newPoint.y;
-              }
-              return false;
-            }
-          }
+          text: 'Real-time IoT Data'
         },
 
         xAxis: {
@@ -136,7 +108,7 @@
 
         series: [
           {
-            name: 'Random data',
+            name: 'IoT Data',
             lineWidth: 2,
             color: Highcharts.getOptions().colors[2],
             data
@@ -145,12 +117,13 @@
       });
     }
   };
+
   $(function(){
     chart4.init();
   });
 </script>
 
 <div class="col-sm-10">
-  <h2>Chart4 Page</h2>
+  <h2>Chart4: Real-time IoT Data</h2>
   <div id="container"></div>
 </div>

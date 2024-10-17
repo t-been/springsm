@@ -17,7 +17,7 @@
         },
         getdata:function(){
             $.ajax({
-                url:'/charts/chart1',
+                url:'/iot/chartData',
                 success:(datas)=>{
                     this.display(datas);
                 }
@@ -29,33 +29,20 @@
                     type: 'line'
                 },
                 title: {
-                    text: 'Monthly Average Temperature'
-                },
-                subtitle: {
-                    text: 'Source: ' +
-                        '<a href="https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature" ' +
-                        'target="_blank">Wikipedia.com</a>'
+                    text: 'Real-time IoT Data'
                 },
                 xAxis: {
-                    categories: [
-                        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-                        'Oct', 'Nov', 'Dec'
-                    ]
+                    categories: [...Array(datas.length).keys()].map(i => `Data ${i + 1}`),  // 데이터 인덱스
                 },
                 yAxis: {
                     title: {
-                        text: 'Temperature (°C)'
+                        text: 'Power Usage (W)'
                     }
                 },
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: true
-                        },
-                        enableMouseTracking: false
-                    }
-                },
-                series: datas
+                series: [{
+                    name: 'Power',
+                    data: datas  // 서버에서 가져온 데이터
+                }]
             });
         }
     };
