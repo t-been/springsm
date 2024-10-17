@@ -6,21 +6,12 @@
     height: 500px;
     border: 2px solid red;
   }
-  #LogSelectButton {
-    margin-top: 20px;
-  }
-  #statusMessage {
-    margin-top: 10px;
-    font-weight: bold;
-    color: green;
-  }
 </style>
 
 <script>
   let chart4 = {
     init: function () {
       this.getdata();
-      this.addButtonListener(); // 버튼 클릭 리스너 추가
     },
 
     getdata: function () {
@@ -33,13 +24,14 @@
                 series = chart.series[0];
 
         setInterval(function () {
-          const x = (new Date()).getTime(), // 현재 시간
-                  y = Math.random();  // 랜덤 값
+          const x = (new Date()).getTime(), // current time
+                  y = Math.random();
 
           series.addPoint([x, y], true, true);
         }, 1000);
       };
 
+// Create the initial data
       const data = (function () {
         const data = [];
         const time = new Date().getTime();
@@ -53,6 +45,34 @@
         return data;
       }());
 
+      Highcharts.addEvent(Highcharts.Series, 'addPoint', e => {
+        const point = e.point,
+                series = e.target;
+
+        if (!series.pulse) {
+          series.pulse = series.chart.renderer.circle()
+                  .add(series.markerGroup);
+        }
+
+        setTimeout(() => {
+          series.pulse
+                  .attr({
+                    x: series.xAxis.toPixels(point.x, true),
+                    y: series.yAxis.toPixels(point.y, true),
+                    r: series.options.marker.radius,
+                    opacity: 1,
+                    fill: series.color
+                  })
+                  .animate({
+                    r: 20,
+                    opacity: 0
+                  }, {
+                    duration: 1000
+                  });
+        }, 1);
+      });
+
+
       Highcharts.chart('container', {
         chart: {
           type: 'spline',
@@ -60,79 +80,72 @@
             load: onChartLoad
           }
         },
+
         time: {
           useUTC: false
         },
+
         title: {
           text: 'Live random data'
         },
+
+        accessibility: {
+          announceNewData: {
+            enabled: true,
+            minAnnounceInterval: 15000,
+            announcementFormatter: function (allSeries, newSeries, newPoint) {
+              if (newPoint) {
+                return 'New point added. Value: ' + newPoint.y;
+              }
+              return false;
+            }
+          }
+        },
+
         xAxis: {
           type: 'datetime',
           tickPixelInterval: 150,
           maxPadding: 0.1
         },
+
         yAxis: {
           title: {
             text: 'Value'
-          }
+          },
+          plotLines: [
+            {
+              value: 0,
+              width: 1,
+              color: '#808080'
+            }
+          ]
         },
-        series: [{
-          name: 'Random data',
-          data: data
-        }]
-      });
-    },
 
-    // 버튼 클릭 리스너 추가
-    addButtonListener: function () {
-      let isRequestPending = false; // 중복 요청 방지
-
-      document.getElementById('LogSelectButton').addEventListener('click', function () {
-        if (isRequestPending) {
-          return; // 요청이 진행 중이면 아무 동작도 하지 않음
-        }
-
-        // 클릭 시 랜덤 값 생성
-        const x = (new Date()).getTime(); // 현재 시간
-        const y = Math.random(); // 새로운 랜덤 값
-        isRequestPending = true; // 요청 진행 중
-
-        // 서버로 로그 전송 (버튼 클릭 이벤트)
-        chart4.logToServer(x, y, 'Button Clicked', function (success) {
-          isRequestPending = false; // 요청 완료
-          if (success) {
-            document.getElementById('statusMessage').textContent = '로그가 성공적으로 전송되었습니다.';
-          } else {
-            document.getElementById('statusMessage').textContent = '로그 전송에 실패했습니다.';
-          }
-        });
-      });
-    },
-
-    // 서버로 로그 데이터 전송 (AJAX)
-    logToServer: function (x, y, event, callback) {
-      $.ajax({
-        url: '/chart/log',  // 로그 데이터를 처리할 서버 엔드포인트
-        method: 'POST',
-        data: JSON.stringify({
-          timestamp: x,
-          value: y,
-          event: event
-        }),
-        contentType: 'application/json',
-        success: function () {
-          console.log('Logged successfully');
-          if (callback) callback(true); // 성공 콜백
+        tooltip: {
+          headerFormat: '<b>{series.name}</b><br/>',
+          pointFormat: '{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}'
         },
-        error: function () {
-          console.log('Logging failed');
-          if (callback) callback(false); // 실패 콜백
-        }
+
+        legend: {
+          enabled: false
+        },
+
+        exporting: {
+          enabled: false
+        },
+
+        series: [
+          {
+            name: 'Random data',
+            lineWidth: 2,
+            color: Highcharts.getOptions().colors[2],
+            data
+          }
+        ]
       });
     }
   };
-
-  $(function () {
+  $(function(){
     chart4.init();
   });
 </script>
@@ -140,6 +153,4 @@
 <div class="col-sm-10">
   <h2>Chart4 Page</h2>
   <div id="container"></div>
-  <button id="LogSelectButton">Log Select Data</button>
-  <div id="statusMessage"></div>
 </div>
