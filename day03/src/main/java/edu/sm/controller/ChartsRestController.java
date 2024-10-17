@@ -22,11 +22,11 @@ public class ChartsRestController {
 
     @RequestMapping("/chart1")
     public Object chart1() throws Exception {
-        String logfile = readlogdir + "power.log";
+        String logfile = readlogdir+"power.log";
 
         JSONObject result = new JSONObject();
 
-        // [{}]
+        //[{}]
         JSONArray jsonArray = new JSONArray();
         JSONObject jsonObject = new JSONObject();
 
@@ -35,12 +35,16 @@ public class ChartsRestController {
         CSVReader reader = null;
         reader = new CSVReader(new FileReader(logfile));
 
-        String[] lineData = null;
+        String [] lineData = null;
         JSONArray jsonArray1 = new JSONArray();
         JSONArray timeArray = new JSONArray();
+        String endline = "";
+        String endTime = "";
         while((lineData = reader.readNext()) != null){
             jsonArray1.add(Float.parseFloat(lineData[1]));
             timeArray.add(lineData[0]);
+            endTime = lineData[0];
+            endline = lineData[1];
         }
 
         jsonObject.put("data", jsonArray1);
@@ -48,8 +52,13 @@ public class ChartsRestController {
         jsonArray.add(jsonObject);
         log.info(jsonArray.toJSONString());
 
+        // [{}]
+        // {'x':[], result:[{}]}
         result.put("result", jsonArray);
-        result.put("x", timeArray);
+        result.put("x",timeArray );
+        result.put("endtime",endTime );
+        result.put("endline",Float.parseFloat(endline) );
+        log.info(result.toJSONString());
         return result;
     }
 }
