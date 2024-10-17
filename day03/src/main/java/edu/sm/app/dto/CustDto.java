@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Cust {
+public class CustDto {
     private String id;
     private String pwd;
     private String name;
