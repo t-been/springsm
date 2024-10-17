@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
-    <!-- 로그 파일이 저장될 디렉토리 설정 -->
+    <!--    <property resource="logback.properties" />-->
+    <!--    <property name="LOGS_DIR" value="${logdir}" />-->
     <property name="LOGS_DIR" value="d:/springsm/logs/" />
 
-    <!-- Console로 로그 출력 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
+            <!--<Pattern>[%d{MM-dd HH:mm:ss}][%thread] %-5level %logger{36} - %msg%n</Pattern>-->
             <Pattern>[%d{MM-dd HH:mm:ss}] %-5level %logger{36} - %msg%n</Pattern>
         </layout>
     </appender>
 
-    <!-- 기본 로그 파일 설정 -->
+
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOGS_DIR}/logback.log</file>
         <encoder>
@@ -26,7 +26,6 @@
         </rollingPolicy>
     </appender>
 
-    <!-- JS 관련 로그 설정 -->
     <appender name="FILE2" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOGS_DIR}/jsinfo.log</file>
         <encoder>
@@ -41,14 +40,13 @@
         </rollingPolicy>
     </appender>
 
-    <!-- Chart 로그 파일 설정 -->
-    <appender name="CHART_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS_DIR}/chart.log</file>
+    <appender name="FILE3" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/power.log</file>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss}, %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS_DIR}/chart.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <fileNamePattern>${LOGS_DIR}/power.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>5MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -56,17 +54,22 @@
         </rollingPolicy>
     </appender>
 
-    <logger name="edu.sm.controller.LogController" level="INFO">
-        <appender-ref ref="CHART_FILE" />
+    <!--    <logger name="org.springframework.web" level="DEBUG">-->
+    <!--        <appender-ref ref="STDOUT" />-->
+    <!--        <appender-ref ref="FILE" />-->
+    <!--    </logger>-->
+    <logger name="edu.sm.controller.JsController" level="INFO">
+        <appender-ref ref="FILE2" />
     </logger>
 
+    <logger name="edu.sm.controller.IotRestController" level="INFO">
+        <appender-ref ref="FILE3" />
+    </logger>
 
-    <!-- 루트 Logger 설정 (필요 시 콘솔에도 출력) -->
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
 
-    <!-- 기타 로깅 설정 -->
     <logger name="jdbc" level="OFF" />
     <logger name="jdbc.sqlonly" level="INFO" />
     <logger name="jdbc.sqltiming" level="OFF" />
@@ -74,5 +77,5 @@
     <logger name="jdbc.resultset" level="OFF" />
     <logger name="jdbc.resultsettable" level="INFO" />
     <logger name="jdbc.connection" level="OFF" />
-
+    <!-- INFO(trace > debug > info > warn > error)  -->
 </configuration>

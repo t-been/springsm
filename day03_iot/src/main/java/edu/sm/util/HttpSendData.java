@@ -6,7 +6,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class HttpSendData {
-    public static void send(String url, String data) {
+    public static void send(String url, String data){
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
@@ -15,8 +15,9 @@ public class HttpSendData {
                 .build();
         try {
             client.send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (Exception e) {
+        }catch(Exception e){
             System.out.println("Server Error");
         }
     }
+
 }
