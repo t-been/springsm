@@ -9,23 +9,23 @@ spring:
     view:
       prefix: /views/
       suffix: .jsp
-      datasource:
-        #driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-        #url: jdbc:log4jdbc:mysql://127.0.0.1:3306/shopdb?characterEncoding=utf8
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/shopdb?characterEncoding=utf8
-        username: smuser
-        password: 111111
-        mybatis:
-          type-aliases-package: edu.sm.app.dto
-          mapper-locations: classpath:/mapper/*.xml
+  datasource:
+    #    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    #    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/shopdb?characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/smdb?characterEncoding=utf8
+    username: smuser
+    password: 111111
+mybatis:
+  type-aliases-package: edu.sm.app.dto
+  mapper-locations: classpath:/mapper/*.xml
 logging:
   level:
     root: info
-
+#  error > info > debug
 
 app:
   dir:
-    imgdir: file:///d:/springsm/imgs/
-    logdir: file:///d:/springsm/logs/
-    readlogdir: d:/springsm/logs/
+    imgdir: file:///c:/springsm/imgs/
+    logdir: file:///c:/springsm/logs/
+    readlogdir: c:/springsm/logs/

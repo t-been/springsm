@@ -18,19 +18,17 @@ public class CustController {
 
     @RequestMapping("")
     public String cust(Model model) {
-        model.addAttribute("left", dir+"left");
-        model.addAttribute("center", dir+"center");
+        model.addAttribute("left",dir+"left");
+        model.addAttribute("center",dir+"center");
         return "index";
     }
-
-    @RequestMapping("add")
+    @RequestMapping("/add")
     public String add(Model model) {
-        model.addAttribute("left", dir+"left");
-        model.addAttribute("center", dir+"add");
+        model.addAttribute("left",dir+"left");
+        model.addAttribute("center",dir+"add");
         return "index";
     }
-
-    @RequestMapping("get")
+    @RequestMapping("/get")
     public String get(Model model) {
         List<CustDto> custs = new ArrayList<>();
         custs.add(CustDto.builder().id("id01").pwd("pwd01").name("james01").build());
@@ -39,9 +37,10 @@ public class CustController {
         custs.add(CustDto.builder().id("id04").pwd("pwd04").name("james04").build());
         custs.add(CustDto.builder().id("id05").pwd("pwd05").name("james05").build());
 
-        model.addAttribute("custs", custs);
-        model.addAttribute("left", dir+"left");
-        model.addAttribute("center", dir+"get");
+        model.addAttribute("custs",custs);
+        model.addAttribute("left",dir+"left");
+        model.addAttribute("center",dir+"get");
         return "index";
     }
+
 }

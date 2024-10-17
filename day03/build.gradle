@@ -40,7 +40,7 @@ dependencies {
 
     // Mybatis & MySQL Driver
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
-    runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation 'com.mysql:mysql-connector-j:8.3.0'
 
     // JSON
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
@@ -53,7 +53,6 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
 }
 
 tasks.named('test') {

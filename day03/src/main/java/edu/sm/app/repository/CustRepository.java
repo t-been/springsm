@@ -8,5 +8,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface CustRepository extends SMRepository<String, CustDto> {
-
 }
