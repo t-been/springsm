@@ -6,7 +6,7 @@
     height: 500px;
     border: 2px solid red;
   }
-  #changeDataButton {
+  #LogSelectButton {
     margin-top: 20px;
   }
   #statusMessage {
@@ -87,7 +87,7 @@
     addButtonListener: function () {
       let isRequestPending = false; // 중복 요청 방지
 
-      document.getElementById('changeDataButton').addEventListener('click', function () {
+      document.getElementById('LogSelectButton').addEventListener('click', function () {
         if (isRequestPending) {
           return; // 요청이 진행 중이면 아무 동작도 하지 않음
         }
@@ -140,6 +140,6 @@
 <div class="col-sm-10">
   <h2>Chart4 Page</h2>
   <div id="container"></div>
-  <button id="changeDataButton">Change Chart Data</button>
+  <button id="LogSelectButton">Log Select Data</button>
   <div id="statusMessage"></div>
 </div>
