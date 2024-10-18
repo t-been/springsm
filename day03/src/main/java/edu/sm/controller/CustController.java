@@ -31,11 +31,11 @@ public class CustController {
     @RequestMapping("/get")
     public String get(Model model) {
         List<CustDto> custs = new ArrayList<>();
-        custs.add(CustDto.builder().id("id01").pwd("pwd01").name("james01").build());
-        custs.add(CustDto.builder().id("id02").pwd("pwd02").name("james02").build());
-        custs.add(CustDto.builder().id("id03").pwd("pwd03").name("james03").build());
-        custs.add(CustDto.builder().id("id04").pwd("pwd04").name("james04").build());
-        custs.add(CustDto.builder().id("id05").pwd("pwd05").name("james05").build());
+//        custs.add(CustDto.builder().id("id01").pwd("pwd01").name("james01").build());
+//        custs.add(CustDto.builder().id("id02").pwd("pwd02").name("james02").build());
+//        custs.add(CustDto.builder().id("id03").pwd("pwd03").name("james03").build());
+//        custs.add(CustDto.builder().id("id04").pwd("pwd04").name("james04").build());
+//        custs.add(CustDto.builder().id("id05").pwd("pwd05").name("james05").build());
 
         model.addAttribute("custs",custs);
         model.addAttribute("left",dir+"left");

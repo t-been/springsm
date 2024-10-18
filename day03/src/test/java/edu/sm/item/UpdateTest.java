@@ -1,7 +1,9 @@
-package edu.sm.cust;
+package edu.sm.item;
 
 import edu.sm.app.dto.CustDto;
+import edu.sm.app.dto.ItemDto;
 import edu.sm.app.service.CustService;
+import edu.sm.app.service.ItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +11,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Slf4j
-class InsertTest {
+class UpdateTest {
     @Autowired
-    CustService custService;
+    ItemService itemService;
 
     @Test
     void contextLoads() {
-        CustDto custDto = CustDto.builder().custId("id03").custPwd("pwd03").custName("이금자").build();
+
+        ItemDto itemDto = ItemDto.builder().itemId(1).itemName("cpu").itemPrice(20000).imgName("a.jpg").build();
         try {
-            custService.add(custDto);
+            itemService.modify(itemDto);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
 }
