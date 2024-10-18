@@ -18,8 +18,7 @@ class SelectTest {
     @Test
     void contextLoads() {
         try {
-            List<CustDto> list = custService.get();
-            log.info(list.toString());
+            custService.get();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

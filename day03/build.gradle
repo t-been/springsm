@@ -40,7 +40,13 @@ dependencies {
 
     // Mybatis & MySQL Driver
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
-    implementation 'com.mysql:mysql-connector-j:8.3.0'
+    implementation 'com.mysql:mysql-connector-j'
+
+    // logback SQL
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+
+    // Properties Encryption
+    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3'
 
     // JSON
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
