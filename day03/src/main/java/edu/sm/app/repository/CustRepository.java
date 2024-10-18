@@ -5,7 +5,11 @@ import edu.sm.app.frame.SMRepository;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface CustRepository extends SMRepository<String, CustDto> {
+    List<CustDto> findByName(String Name);
+
 }
