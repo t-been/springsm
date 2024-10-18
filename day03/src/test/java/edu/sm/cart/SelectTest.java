@@ -1,6 +1,6 @@
-package edu.sm.item;
+package edu.sm.cart;
 
-import edu.sm.app.service.ItemService;
+import edu.sm.app.service.CartService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +10,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 @Slf4j
 class SelectTest {
     @Autowired
-    ItemService itemService;
+    CartService cartService;
 
     @Test
     void contextLoads() {
         try {
-            itemService.get();
+            cartService.get();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

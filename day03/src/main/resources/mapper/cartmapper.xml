@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sm.app.repository.CartRepository">
+
+
+    <select id="findByName" resultType="cartDto" parameterType="String">
+        SELECT * FROM cart WHERE item_name LIKE CONCAT('%', #{name}, '%')
+    </select>
+
+    <resultMap id="cartResultMap" type="CartDto">
+        <id column="cart_id" property="cartId"/>
+        <result column="user_id" property="userId"/>
+        <result column="item_id" property="itemId"/>
+        <result column="count" property="count"/>
+        <result column="creg_date" property="regDate"/>
+        <association property="item" javaType="Item">
+            <id column="item_id" property="itemId"/>
+            <result column="item_name" property="itemName"/>
+            <result column="item_price" property="itemPrice"/>
+            <result column="img_name" property="imgName"/>
+            <result column="ireg_date" property="regDate"/>
+            <result column="iupdate_date" property="updateDate"/>
+        </association>
+    </resultMap>
+
+
+    <select id="selectOne" parameterType="Integer" resultType="cartDto">
+        SELECT * FROM cart WHERE item_id=#{id}
+    </select>
+    <select id="select" resultMap="cartResultMap">
+        select cart_id, user_id, c.item_id, count, c.reg_date as creg_date,
+               item_name, item_price, img_name, i.reg_date as ireg_date, update_date as iupdate_date
+        from cart c
+                 inner join item i on c.item_id = i.item_id
+    </select>
+    <insert id="insert" parameterType="cartDto">
+        INSERT INTO cart VALUES (null, #{userId},#{itemId},#{count}, SYSDATE())
+    </insert>
+    <update id="update" parameterType="cartDto">
+        UPDATE cart SET count=#{count} WHERE item_id=#{cartId}
+    </update>
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM cart WHERE item_id=#{id}
+    </delete>
+
+</mapper>
