@@ -1,6 +1,9 @@
 package edu.sm.controller;
 
+import edu.sm.app.dto.CustDto;
 import edu.sm.app.dto.Marker;
+import edu.sm.app.service.CustService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +15,11 @@ import java.util.*;
 
 @RestController
 @Slf4j
+@RequiredArgsConstructor
 public class AjaxRestController {
+
+    final CustService custService;
+
     @RequestMapping("/getmarkers")
     public Object getmarkers(@RequestParam("target") int target){
         log.info("Tager"+target);
@@ -56,12 +63,13 @@ public class AjaxRestController {
     }
 
     @RequestMapping("/checkid")
-    public Object checkid(@RequestParam("rid") String id) {
+    public Object checkid(@RequestParam("rid") String id) throws Exception {
         JSONObject obj = new JSONObject();
-        if(id.equals("qqqq") || id.equals("qqqqq")) {
-            obj.put("result","1");
-        } else{
-            obj.put("result","0");
+        CustDto custDto = null;
+        custDto = custService.get(id);
+        obj.put("result", "0");
+        if(custDto != null) {
+            obj.put("result", "1");
         }
 
         return obj;

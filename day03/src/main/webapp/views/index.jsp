@@ -9,16 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="<c:url value="/js/index.js"/> "></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4d6c420f59edfb20579ef2824075540b"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <%-- kakaomap API --%>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=032f5780c7e0cf85db70f64b14b971d6"></script>
-    <%-- chart API --%>
+
+    <%--HighCharts Lib  start --%>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <%--HighCharts Lib  end --%>
 
     <style>
         .fakeimg {
@@ -31,8 +33,8 @@
 
 <div class="jumbotron text-center" style="margin-bottom:0">
     <h1>My First Bootstrap 4 Page</h1>
-    <img src = "<c:url value="/img/sm.jpg"/> ">
-    <img src = "<c:url value="/imgs/car.jpg"/> ">
+    <img src="<c:url value="/img/sm.jpg"/> ">
+    <img src="<c:url value="/imgs/car.jpg"/> ">
     <p>Resize this responsive page to see the effect!</p>
 </div>
 <ul class="nav justify-content-end">
@@ -50,13 +52,15 @@
         </c:when>
         <c:otherwise>
             <li class="nav-item">
-                <a class="nav-link" href="#">${sessionScope.loginid}</a>
+                <a class="nav-link" href="#">${sessionScope.loginid.custId}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/logoutimpl"/>">Logout</a>
             </li>
         </c:otherwise>
     </c:choose>
+
+
 </ul>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand" href="<c:url value="/" /> ">Navbar</a>
@@ -77,8 +81,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="<c:url value="/chart"/> ">Chart</a>
             </li>
-
-            <c:if test ="${sessionScope.loginid != null}">
+            <c:if test="${sessionScope.loginid != null}">
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/cust"/> ">Cust</a>
                 </li>

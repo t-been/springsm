@@ -1,7 +1,9 @@
 package edu.sm.controller;
 
 import edu.sm.app.dto.CustDto;
+import edu.sm.app.service.CustService;
 import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Slf4j
+@RequiredArgsConstructor
 public class MainInputController {
+
+    final CustService custService;
+
     // 로그아웃 처리 메소드
     @RequestMapping("/logoutimpl")
     public String logoutimpl(HttpSession session, Model model) {
@@ -53,13 +59,11 @@ public class MainInputController {
     @RequestMapping("/registerimpl")
     public String registerimpl(Model model,
                                CustDto custDto,
-                               HttpSession session) {
-        log.info("ID :" + id);
-        log.info("PWD :" + pwd);
-        log.info("NAME :" + name);
-        session.setAttribute("loginid", id);
+                               HttpSession session) throws Exception {
+        log.info("Cust Info : " + custDto.toString());
+        custService.add(custDto);
+        session.setAttribute("loginid", custDto);
         model.addAttribute("center", "registerok");
-        model.addAttribute("id", id);
 
         return "index";
     }
