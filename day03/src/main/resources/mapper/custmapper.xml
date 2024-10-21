@@ -4,9 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.sm.app.repository.CustRepository">
 
+
     <select id="findByName" resultType="CustDto" parameterType="String">
-        select * from cust WHERE cust_name LIKE CONCAT('%', #{name}, '%')
+        SELECT * FROM cust WHERE name LIKE CONCAT('%', #{name}, '%')
     </select>
+
+
     <select id="selectOne" parameterType="String" resultType="custDto">
         SELECT * FROM cust WHERE cust_id=#{id}
     </select>

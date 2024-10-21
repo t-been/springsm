@@ -15,15 +15,12 @@ class InsertTest {
 
     @Test
     void contextLoads() {
-        CartDto cartDto = CartDto.builder()
-                .userId("user01")
-                .itemId(122)
-                .count(30)
-                .build();
+        CartDto cartDto = CartDto.builder().cartCount(2).cartUserId("id02").cartItemId(2).build();
         try {
             cartService.add(cartDto);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
 }

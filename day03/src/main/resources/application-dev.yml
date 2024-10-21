@@ -26,6 +26,8 @@ spring:
 mybatis:
   type-aliases-package: edu.sm.app.dto
   mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
 
 # 4. Logging Setting
 logging:
@@ -37,5 +39,6 @@ logging:
 app:
   dir:
     imgdir: file:///d:/springsm/imgs/
+    # logdir : /root/users/projects/logs/
     logdir: file:///d:/springsm/logs/
     readlogdir: d:/springsm/logs/

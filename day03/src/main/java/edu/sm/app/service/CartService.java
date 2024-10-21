@@ -1,7 +1,6 @@
 package edu.sm.app.service;
 
 import edu.sm.app.dto.CartDto;
-import edu.sm.app.dto.ItemDto;
 import edu.sm.app.frame.SMService;
 import edu.sm.app.repository.CartRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CartService implements SMService<Integer, CartDto> {
+public class CartService implements SMService<CartDto, CartDto> {
 
     final CartRepository cartRepository;
 
@@ -26,21 +25,17 @@ public class CartService implements SMService<Integer, CartDto> {
     }
 
     @Override
-    public void del(Integer s) throws Exception {
-        cartRepository.delete(s);
+    public void del(CartDto cartDto) throws Exception {
+        cartRepository.delete(cartDto);
     }
 
     @Override
-    public CartDto get(Integer s) throws Exception {
-        return cartRepository.selectOne(s);
+    public CartDto get(CartDto cartDto) throws Exception {
+        return cartRepository.selectOne(cartDto);
     }
 
     @Override
     public List<CartDto> get() throws Exception {
         return cartRepository.select();
-    }
-
-    public List<CartDto> findByName(String name) throws Exception {
-        return cartRepository.findByName(name);
     }
 }
