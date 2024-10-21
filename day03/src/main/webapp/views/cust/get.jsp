@@ -16,9 +16,9 @@
         <tbody>
             <c:forEach var="c" items="${custs}">
                 <tr>
-                    <td>${c.id}</td>
-                    <td>${c.pwd}</td>
-                    <td>${c.name}</td>
+                    <td><a href="/cust/detail?id=${c.custId}">${c.custId}</a></td>
+                    <td>${c.custPwd}</td>
+                    <td>${c.custName}</td>
                 </tr>
             </c:forEach>
         </tbody>

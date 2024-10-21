@@ -64,7 +64,7 @@ public class MainInputController {
     }
 
     @RequestMapping("/registerimpl")
-    public String registerimpl(Model model,
+    public String registermpl(Model model,
                                CustDto custDto,
                                HttpSession session) throws Exception {
         log.info("Cust Info : " + custDto.toString());
