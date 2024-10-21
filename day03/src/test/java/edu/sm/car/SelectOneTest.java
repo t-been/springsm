@@ -1,6 +1,9 @@
-package edu.sm.item;
+package edu.sm.car;
 
-import edu.sm.app.service.ItemService;
+import edu.sm.app.dto.CarDto;
+import edu.sm.app.dto.CartDto;
+import edu.sm.app.service.CarService;
+import edu.sm.app.service.CartService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +11,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Slf4j
-class FindByNameTest {
+class SelectOneTest {
     @Autowired
-    ItemService itemService;
+    CarService carService;
 
     @Test
     void contextLoads() {
+        CarDto carDto = CarDto.builder().carId("1").carModel("K5").build();
         try {
-            itemService.findByName("l");
+            carService.get(carDto);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
 }

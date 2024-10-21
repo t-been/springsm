@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.sm.app.repository.CarRepository">
+
+    <select id="findByName" resultType="carDto" parameterType="String">
+        SELECT * FROM car WHERE car_model LIKE CONCAT('%', #{carModel}, '%')
+    </select>
+    <select id="selectOne" parameterType="carDto" resultType="carDto">
+        SELECT * FROM car WHERE car_id=#{carId}
+                             and  car_model=#{carModel}
+    </select>
+    <select id="select" resultType="carDto">
+        SELECT * FROM car
+    </select>
+    <insert id="insert" parameterType="carDto">
+        INSERT INTO car VALUES (null ,#{carModel},#{imgName},#{carPrice}, SYSDATE())
+    </insert>
+    <update id="update" parameterType="carDto">
+        UPDATE car SET car_model=#{carModel}, img_name=#{imgName}, car_price=#{carPrice} WHERE car_id=#{carId}
+    </update>
+    <delete id="delete" parameterType="carDto">
+        DELETE FROM car WHERE car_id=#{carId}
+    </delete>
+</mapper>

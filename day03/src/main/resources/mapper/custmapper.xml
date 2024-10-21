@@ -8,8 +8,6 @@
     <select id="findByName" resultType="CustDto" parameterType="String">
         SELECT * FROM cust WHERE name LIKE CONCAT('%', #{name}, '%')
     </select>
-
-
     <select id="selectOne" parameterType="String" resultType="custDto">
         SELECT * FROM cust WHERE cust_id=#{id}
     </select>

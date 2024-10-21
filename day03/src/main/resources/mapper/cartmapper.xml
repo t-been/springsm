@@ -23,11 +23,11 @@
         select
             cart_user_id,
             cart_item_id,
-            cart_count,
+            cart_cunt,
             cart_reg_date,
             item_name,
             item_price,
-            img_name
+            img_nameo
         from cart as c
                  inner join item i on c.cart_item_id = i.item_id
         where i.item_name LIKE CONCAT('%', #{itemName}, '%')
