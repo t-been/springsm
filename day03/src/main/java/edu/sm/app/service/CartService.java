@@ -38,4 +38,8 @@ public class CartService implements SMService<CartDto, CartDto> {
     public List<CartDto> get() throws Exception {
         return cartRepository.select();
     }
+
+    public List<CartDto> findByName(CartDto cartDto) {
+        return cartRepository.findByName(cartDto);
+    }
 }

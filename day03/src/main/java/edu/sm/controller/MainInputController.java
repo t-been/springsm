@@ -1,5 +1,6 @@
 package edu.sm.controller;
 
+import edu.sm.app.dto.CustDto;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -51,9 +52,7 @@ public class MainInputController {
 
     @RequestMapping("/registerimpl")
     public String registerimpl(Model model,
-                               @RequestParam("id") String id,
-                               @RequestParam("pwd") String pwd,
-                               @RequestParam("name") String name,
+                               CustDto custDto,
                                HttpSession session) {
         log.info("ID :" + id);
         log.info("PWD :" + pwd);
