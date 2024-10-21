@@ -71,7 +71,6 @@ public class AjaxRestController {
         if(custDto != null) {
             obj.put("result", "1");
         }
-
         return obj;
     }
 

@@ -60,7 +60,6 @@
         </c:otherwise>
     </c:choose>
 
-
 </ul>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand" href="<c:url value="/" /> ">Navbar</a>
@@ -117,6 +116,5 @@
 <div class="jumbotron text-center" style="margin-bottom:0">
     <p>Footer</p>
 </div>
-
 </body>
 </html>
