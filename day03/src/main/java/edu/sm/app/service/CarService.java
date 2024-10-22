@@ -1,6 +1,7 @@
 package edu.sm.app.service;
 
 import edu.sm.app.dto.CarDto;
+import edu.sm.app.dto.CartDto;
 import edu.sm.app.frame.SMService;
 import edu.sm.app.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
@@ -42,5 +43,9 @@ public class CarService implements SMService<Integer, CarDto> {
     @Override
     public List<CarDto> get() throws Exception {
         return carRepository.select();
+    }
+
+    public List<CarDto> findByName(CarDto carDto) {
+        return carRepository.findByName(carDto);
     }
 }

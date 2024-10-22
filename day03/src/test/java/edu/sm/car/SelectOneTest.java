@@ -17,9 +17,9 @@ class SelectOneTest {
 
     @Test
     void contextLoads() {
-        CarDto carDto = CarDto.builder().carId("1").carModel("K5").build();
+        CarDto carDto = CarDto.builder().carId(3).carModel("K5").build();
         try {
-            carService.get(carDto);
+            carService.get(carDto.getCarId());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
