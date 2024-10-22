@@ -2,10 +2,8 @@ package edu.sm.controller;
 
 import com.github.pagehelper.PageInfo;
 import edu.sm.app.dto.CarDto;
-import edu.sm.app.dto.CustDto;
 import edu.sm.app.dto.Search;
 import edu.sm.app.service.CarService;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -13,9 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.smartcardio.Card;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Controller
