@@ -45,11 +45,11 @@
       <form id = "login_form">
         <div class="form-group">
           <label for="id">ID address:</label>
-          <input type="text" class="form-control" placeholder="Enter ID" id="id" name = 'id'>
+          <input type="text" value="id01" class="form-control" placeholder="Enter ID" id="id" name = 'id'>
         </div>
         <div class="form-group">
           <label for="pwd">Password:</label>
-          <input type="password" class="form-control" placeholder="Enter password" id="pwd" name = 'pwd'>
+          <input type="password" value="pwd01" class="form-control" placeholder="Enter password" id="pwd" name = 'pwd'>
         </div>
 
         <button type="button" class="btn btn-primary">Submit</button>
