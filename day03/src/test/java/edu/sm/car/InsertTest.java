@@ -15,7 +15,7 @@ class InsertTest {
 
     @Test
     void contextLoads() {
-        CarDto carDto = CarDto.builder().carId("").carModel("K3").imgName("hyundaii").carPrice("14000000").build();
+        CarDto carDto = CarDto.builder().carId(1).carModel("K3").imgName("hyundaii").carPrice(1400000).build();
         try {
             carService.add(carDto);
         } catch (Exception e) {

@@ -17,7 +17,7 @@ class UpdateTest {
 
     @Test
     void contextLoads() {
-        CarDto carDto = CarDto.builder().carId("1").carModel("아반뗴").imgName("ass").carPrice("10000000").build();
+        CarDto carDto = CarDto.builder().carId(1).carModel("아반뗴").imgName("ass").carPrice(1000000).build();
         try {
             carService.modify(carDto);
         } catch (Exception e) {

@@ -17,9 +17,9 @@ class DeleteTest {
 
     @Test
     void contextLoads() {
-        CarDto carDto = CarDto.builder().carId("1").build();
+        CarDto carDto = CarDto.builder().carId(1).build();
         try {
-            carService.del(carDto);
+            carService.del(carDto.getCarId());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

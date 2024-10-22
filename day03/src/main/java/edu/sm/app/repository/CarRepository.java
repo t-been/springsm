@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 @Mapper
-public interface CarRepository extends SMRepository<CarDto, CarDto> {
+public interface CarRepository extends SMRepository<Integer, CarDto> {
     List<CarDto> findByName(CarDto carDto);
 
 }
