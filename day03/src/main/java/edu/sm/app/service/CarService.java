@@ -1,15 +1,15 @@
 package edu.sm.app.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import edu.sm.app.dto.CarDto;
-import edu.sm.app.dto.CartDto;
+import edu.sm.app.dto.Search;
 import edu.sm.app.frame.SMService;
 import edu.sm.app.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -47,5 +47,15 @@ public class CarService implements SMService<Integer, CarDto> {
 
     public List<CarDto> findByName(CarDto carDto) {
         return carRepository.findByName(carDto);
+    }
+
+    public Page<CarDto> getPage(int pageNo) throws Exception {
+        PageHelper.startPage(pageNo, 3); // 3: 한화면에 출력되는 개수
+        return carRepository.getpage();
+    }
+
+    public Page<CarDto> getFindPage(int pageNo, Search search) throws Exception {
+        PageHelper.startPage(pageNo, 3); // 3: 한화면에 출력되는 개수
+        return carRepository.getfindpage(search);
     }
 }

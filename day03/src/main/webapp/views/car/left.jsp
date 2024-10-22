@@ -11,6 +11,11 @@
     <li class="nav-item">
       <a class="nav-link" href="<c:url value="/car/get" /> ">Get</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<c:url value="/car/getpage" /> ">GetPage</a>
+    </li><li class="nav-item">
+    <a class="nav-link" href="<c:url value="/car/search" /> ">Search</a>
+  </li>
   </ul>
   <hr class="d-sm-none">
 </div>

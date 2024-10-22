@@ -19,7 +19,7 @@
         <tbody>
         <c:forEach var="c" items="${cars}">
             <tr>
-                <td>${c.carId}</td>
+                <td><a href="/car/detail?id=${c.carId}">${c.carId}</a></td>
                 <td>${c.carModel}</td>
                 <td>${c.carPrice}</td>
                 <td>${c.imgName}</td>

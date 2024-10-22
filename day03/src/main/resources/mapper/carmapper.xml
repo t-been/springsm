@@ -23,5 +23,17 @@
     <delete id="delete" parameterType="Integer">
         DELETE FROM car WHERE car_id=#{carId}
     </delete>
+    <select id="getpage" resultType="carDto">
+        SELECT * FROM car
+    </select>
+    <select id="getfindpage" resultType="carDto" parameterType="search">
+        SELECT * FROM car WHERE 1=1
+        <if test="keyword == 'id'">
+            AND car_id LIKE CONCAT('%', #{search}, '%')
+        </if>
+        <if test="keyword == 'name'">
+            AND car_model LIKE CONCAT('%', #{search}, '%')
+        </if>
+    </select>
 
 </mapper>

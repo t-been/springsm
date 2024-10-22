@@ -57,7 +57,6 @@
   <div class = "row">
     <div class = "col-sm-5">
       <form id = "register_form">
-
         <div class="form-group">
           <label for="id">ID:<span id = "id_span"></span></label>
           <input type="text" readonly value="${cust.custId}" class="form-control" placeholder="Enter ID" id="id" name = 'custId'>
@@ -73,7 +72,6 @@
 
         <button type="button" id="update_btn" class="btn btn-primary">Update</button>
         <button type="button" id="delete_btn" class="btn btn-primary">Delete</button>
-
       </form>
     </div>
   </div>
