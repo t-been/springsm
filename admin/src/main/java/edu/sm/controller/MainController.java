@@ -1,7 +1,8 @@
 package edu.sm.controller;
 
-import com.hana.app.data.dto.AdminDto;
-import com.hana.app.service.AdminService;
+
+import edu.sm.app.dto.AdminDto;
+import edu.sm.app.service.AdminService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

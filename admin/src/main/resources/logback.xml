@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-<!--    <property resource="logback.properties" />-->
-<!--    <property name="LOGS_DIR" value="${logdir}" />-->
-    <property name="LOGS_DIR" value="c:/springsm/logs/" />
+    <!--    <property resource="logback.properties" />-->
+    <!--    <property name="LOGS_DIR" value="${logdir}" />-->
+    <property name="LOGS_DIR" value="d:/springsm/logs/" />
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -54,18 +54,16 @@
         </rollingPolicy>
     </appender>
 
-
-
-<!--    <logger name="org.springframework.web" level="DEBUG">-->
-<!--        <appender-ref ref="STDOUT" />-->
-<!--        <appender-ref ref="FILE" />-->
-<!--    </logger>-->
-    <logger name="edu.sm.controller.IotRestController" level="INFO">
-        <appender-ref ref="FILE3" />
-    </logger>
-
+    <!--    <logger name="org.springframework.web" level="DEBUG">-->
+    <!--        <appender-ref ref="STDOUT" />-->
+    <!--        <appender-ref ref="FILE" />-->
+    <!--    </logger>-->
     <logger name="edu.sm.controller.JsController" level="INFO">
         <appender-ref ref="FILE2" />
+    </logger>
+
+    <logger name="edu.sm.controller.IotRestController" level="INFO">
+        <appender-ref ref="FILE3" />
     </logger>
 
     <root level="INFO">
