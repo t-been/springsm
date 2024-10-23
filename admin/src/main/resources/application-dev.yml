@@ -41,6 +41,7 @@ app:
     server-url: http://172.16.21.91:81
   dir:
     imgdir: file:///d:/springsm/imgs/
+    uploadimgdir: d:/springsm/imgs/
     # logdir : /root/users/projects/logs/
     logdir: file:///d:/springsm/logs/
     readlogdir: d:/springsm/logs/
