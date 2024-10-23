@@ -13,9 +13,10 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<c:url value="/cust/getpage" /> ">GetPage</a>
-    </li><li class="nav-item">
-    <a class="nav-link" href="<c:url value="/cust/search" /> ">Search</a>
-  </li>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="<c:url value="/cust/findimpl" /> ">Search</a>
+    </li>
 
   </ul>
   <hr class="d-sm-none">
