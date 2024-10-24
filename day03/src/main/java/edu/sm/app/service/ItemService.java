@@ -49,11 +49,16 @@ public class ItemService implements SMService<Integer, ItemDto> {
 
     public Page<ItemDto> getPage(int pageNo) throws Exception {
         PageHelper.startPage(pageNo, 3); // 3: 한화면에 출력되는 개수
-        return itemRepository.getpage();
+        return itemRepository.getPage();
     }
 
     public Page<ItemDto> getFindPage(int pageNo, Search search) throws Exception {
         PageHelper.startPage(pageNo, 3); // 3: 한화면에 출력되는 개수
-        return itemRepository.getfindpage(search);
+        return itemRepository.getFindPage(search);
     }
+    public Page<ItemDto> getFindPageByDate(int pageNo, Search search) throws Exception {
+        PageHelper.startPage(pageNo, 3); // 한 화면에 출력되는 개수
+        return itemRepository.getFindPageByDate(search);
+    }
+
 }

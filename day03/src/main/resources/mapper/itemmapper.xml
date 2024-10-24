@@ -13,10 +13,10 @@
     <select id="select" resultType="itemDto">
         SELECT * FROM item
     </select>
-    <select id="getpage" resultType="itemDto">
+    <select id="getPage" resultType="itemDto">
         SELECT * FROM item
     </select>
-    <select id="getfindpage" resultType="itemDto" parameterType="search">
+    <select id="getFindPage" resultType="itemDto" parameterType="search">
         SELECT * FROM item WHERE 1=1
         <if test="keyword == 'price'">
             AND item_price LIKE CONCAT('%', #{search}, '%')
@@ -37,5 +37,9 @@
     <delete id="delete" parameterType="Integer">
         DELETE FROM item WHERE item_id=#{id}
     </delete>
+    <select id="getFindPageByDate" parameterType="search" resultType="ItemDto">
+        SELECT * FROM item
+        WHERE reg_date BETWEEN #{startDate} AND #{endDate}
+    </select>
 
 </mapper>

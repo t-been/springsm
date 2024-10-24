@@ -80,7 +80,12 @@ public class ItemController {
     @RequestMapping("/findimpl")
     public String findimpl(Model model, Search search, @RequestParam(value = "pageNo", defaultValue = "1") int pageNo) throws Exception {
         PageInfo<ItemDto> p;
-        p = new PageInfo<>(itemService.getFindPage(pageNo, search), 5); // 5:하단 네비게이션 개수
+        if ("reg".equals(search.getKeyword()) && search.getStartDate() != null && search.getEndDate() != null) {
+            p = new PageInfo<>(itemService.getFindPageByDate(pageNo, search), 5);
+        } else {
+            // 일반 검색 처리
+            p = new PageInfo<>(itemService.getFindPage(pageNo, search), 5);
+        }
         model.addAttribute("cpage",p);
         model.addAttribute("target","item");
         model.addAttribute("search",search);

@@ -12,4 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 public class Search {
     private String keyword;
     private String search;
+    private String startDate;
+    private String endDate;
 }
