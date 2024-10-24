@@ -44,12 +44,12 @@
 
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text"  class="form-control" id="name" placeholder="Enter password" name="itemName">
+                        <input type="text"  class="form-control" id="name" placeholder="Enter Name" name="itemName">
 
                     </div>
                     <div class="form-group">
                         <label for="price">Price:</label>
-                        <input type="number"  class="form-control" id="price" placeholder="Enter name" name="itemPrice">
+                        <input type="number"  class="form-control" id="price" placeholder="Enter Price" name="itemPrice">
 
                     </div>
                     <div class="form-group">

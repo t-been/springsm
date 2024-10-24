@@ -5,9 +5,6 @@
 
   <h3>CartScript</h3>
   <ul class="nav nav-pills flex-column">
-    <li class="nav-item">
-      <a class="nav-link" href="<c:url value="/cart/get" /> ">Get</a>
-    </li>
   </ul>
   <hr class="d-sm-none">
 </div>

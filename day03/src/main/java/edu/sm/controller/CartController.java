@@ -8,9 +8,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -30,10 +30,9 @@ public class CartController {
         carts = cartService.getByCustId(custId);
         model.addAttribute("carts", carts);
         model.addAttribute("left", dir + "left");
-        model.addAttribute("center", dir + "get"); // 경로가 올바르게 설정되어 있는지 확인
+        model.addAttribute("center", dir + "get");
         return "index";
     }
-
 
     @RequestMapping("/add")
     public String add(@RequestParam("custId") String custId, @RequestParam("itemId") Integer itemId) {
@@ -50,36 +49,18 @@ public class CartController {
             throw new RuntimeException(e);
         }
 
-        return "redirect:/cart"; // 장바구니 페이지로 리다이렉트
+        return "redirect:/cart"; // "redirect:/cart/get" 대신 "redirect:/cart"로 수정
     }
 
-    @RequestMapping("/get")
-    public String getCart(Model model, HttpSession session) throws Exception {
-        // 세션에서 로그인된 사용자의 정보를 가져옵니다.
-        CustDto custDto = (CustDto) session.getAttribute("loginid");
-        if (custDto == null) {
-            throw new RuntimeException("사용자가 로그인되지 않았습니다.");
-        }
-
-        String custId = custDto.getCustId();
-        List<CartDto> carts = cartService.getByCustId(custId);
-
-        model.addAttribute("carts", carts);
-        model.addAttribute("left", dir + "left");
-        model.addAttribute("center", dir + "get");
-        return "index";
-    }
-
-
-    @PostMapping("/delete")
+    @RequestMapping("/delete")
     public String delete(@RequestParam("custId") String custId, @RequestParam("itemId") Integer itemId) {
         log.info("Deleting cart item - custId: {}, itemId: {}", custId, itemId);
         try {
             CartDto cartDto = CartDto.builder()
                     .cartUserId(custId)
                     .cartItemId(itemId)
-                    .build();00
-            cartService.del(cartDto);
+                    .build();
+            cartService.del(cartDto);  // 서비스의 삭제 메서드를 호출
         } catch (Exception e) {
             log.error("Error while deleting cart item", e);
             throw new RuntimeException(e);
@@ -88,20 +69,26 @@ public class CartController {
         return "redirect:/cart";
     }
 
-    @PostMapping("/count")
+    @RequestMapping("/count")
     public String count(@RequestParam("custId") String custId,
                         @RequestParam("itemId") Integer itemId,
                         @RequestParam("plma") Integer plma) throws Exception {
-        CartDto cart = cartService.get(CartDto.builder()
+        CartDto cart_ = CartDto.builder()
                 .cartUserId(custId)
                 .cartItemId(itemId)
-                .build());
+                .build();
+        CartDto cart = cartService.get(cart_);
         if (plma == 1) {
             cart.setCartCount(cart.getCartCount() + 1);
-        } else if (plma == -1 && cart.getCartCount() > 1) {
-            cart.setCartCount(cart.getCartCount() - 1);
+        } else if (plma == -1) {
+            if (cart.getCartCount() > 1) {
+                cart.setCartCount(cart.getCartCount() -1);
+            }
         }
         cartService.modify(cart);
         return "redirect:/cart";
     }
+
+
+
 }
