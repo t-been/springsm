@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 @Mapper
 public interface CartRepository extends SMRepository<CartDto, CartDto> {
-    List<CartDto> findByName(CartDto cartDto);
+    List<CartDto> selectByCustId(String custId);
 
 }

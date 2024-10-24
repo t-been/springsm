@@ -15,7 +15,7 @@ class InsertTest {
 
     @Test
     void contextLoads() {
-        CartDto cartDto = CartDto.builder().cartCount(2).cartUserId("id02").cartItemId(2).build();
+        CartDto cartDto = CartDto.builder().cartCount(2).cartUserId("id0").cartItemId(1).build();
         try {
             cartService.add(cartDto);
         } catch (Exception e) {

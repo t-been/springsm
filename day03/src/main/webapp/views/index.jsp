@@ -51,6 +51,12 @@
             </li>
         </c:when>
         <c:otherwise>
+<%--            <li class="nav-item">--%>
+<%--                <a class="nav-link" href="#">${sessionScope.loginid.custId}</a>--%>
+<%--            </li>--%>
+            <li class="nav-item">
+                <a class="nav-link" href="<c:url value="/cart"/>">Cart</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">${sessionScope.loginid.custId}</a>
             </li>
@@ -89,6 +95,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/car"/> ">Car</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/cart"/> ">Cart</a>
                 </li>
             </c:if>
         </ul>

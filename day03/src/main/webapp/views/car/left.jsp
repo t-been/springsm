@@ -14,7 +14,7 @@
     <li class="nav-item">
       <a class="nav-link" href="<c:url value="/car/getpage" /> ">GetPage</a>
     </li><li class="nav-item">
-    <a class="nav-link" href="<c:url value="/car/search" /> ">Search</a>
+    <a class="nav-link" href="<c:url value="/car/findimpl" /> ">Search</a>
   </li>
   </ul>
   <hr class="d-sm-none">

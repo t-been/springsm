@@ -5,8 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Builder
@@ -19,4 +19,9 @@ public class ItemDto {
     private String imgName;
     private LocalDateTime regDate;
     private LocalDateTime updateDate;
+
+    public String getFormattedCarRegDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return regDate.format(formatter);
+    }
 }

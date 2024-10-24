@@ -39,7 +39,7 @@ public class CartService implements SMService<CartDto, CartDto> {
         return cartRepository.select();
     }
 
-    public List<CartDto> findByName(CartDto cartDto) {
-        return cartRepository.findByName(cartDto);
+    public List<CartDto> getByCustId(String custId) {
+        return cartRepository.selectByCustId(custId);
     }
 }
