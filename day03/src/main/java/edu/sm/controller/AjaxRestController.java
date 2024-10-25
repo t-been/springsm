@@ -3,12 +3,17 @@ package edu.sm.controller;
 import edu.sm.app.dto.CustDto;
 import edu.sm.app.dto.Marker;
 import edu.sm.app.service.CustService;
+import edu.sm.util.FileUploadUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -17,6 +22,9 @@ import java.util.*;
 @Slf4j
 @RequiredArgsConstructor
 public class AjaxRestController {
+
+    @Value("${app.dir.uploadimgdir}")
+    String uploadImgDir;
 
     final CustService custService;
 
@@ -90,5 +98,12 @@ public class AjaxRestController {
             rankings.add(obj);
         }
         return rankings;
+    }
+
+    @RequestMapping("/saveimg")
+    public String saveimg(@RequestParam("file") MultipartFile file) throws IOException {
+        String imgname = file.getOriginalFilename();
+        FileUploadUtil.saveFile(file, uploadImgDir);
+        return imgname;
     }
 }

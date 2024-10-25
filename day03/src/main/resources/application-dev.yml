@@ -39,6 +39,7 @@ logging:
 app:
   dir:
     imgdir: file:///d:/springsm/imgs/
+    uploadimgdir: d:/springsm/imgs/
     # logdir : /root/users/projects/logs/
     logdir: file:///d:/springsm/logs/
     readlogdir: d:/springsm/logs/

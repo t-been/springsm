@@ -1,13 +1,21 @@
 package edu.sm.controller;
 
+import edu.sm.util.FileUploadUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Controller
 @Slf4j
 public class MainController {
+
     @RequestMapping("/")
     public String main(Model model) {
         log.info("Start Main");
@@ -29,6 +37,12 @@ public class MainController {
     @RequestMapping("/about")
     public String about(Model model) {
         model.addAttribute("center", "about");
+        return "index";
+    }
+
+    @RequestMapping("/webcam")
+    public String webcam(Model model) {
+        model.addAttribute("center", "webcam");
         return "index";
     }
 }
