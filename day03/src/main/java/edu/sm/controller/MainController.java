@@ -1,7 +1,9 @@
 package edu.sm.controller;
 
 import edu.sm.util.FileUploadUtil;
+import edu.sm.util.WeatherUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,11 @@ import java.io.IOException;
 @Controller
 @Slf4j
 public class MainController {
+
+    @Value("${app.key.wkey}")
+    String wkey;
+    @Value("${app.key.skey}")
+    String sKey;
 
     @RequestMapping("/")
     public String main(Model model) {
@@ -44,5 +51,18 @@ public class MainController {
     public String webcam(Model model) {
         model.addAttribute("center", "webcam");
         return "index";
+    }
+
+    @RequestMapping("/wh")
+    @ResponseBody
+    public Object wh(Model model) throws IOException, ParseException {
+        return WeatherUtil.getWeather("108",wkey);
+    }
+
+    @RequestMapping("/sh")
+    @ResponseBody
+    public Object sh(Model model) throws IOException, ParseException {
+        return WeatherUtil.getWeather2("1835848",sKey);
+
     }
 }
