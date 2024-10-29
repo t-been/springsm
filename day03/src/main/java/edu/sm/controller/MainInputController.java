@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,68 +20,58 @@ import java.sql.SQLIntegrityConstraintViolationException;
 public class MainInputController {
 
     final CustService custService;
+    final BCryptPasswordEncoder passwordEncoder;
 
-    // 로그아웃 처리 메소드
     @RequestMapping("/logoutimpl")
     public String logoutimpl(HttpSession session, Model model) {
-        if (session != null) {
-            session.invalidate(); // 세션 정보 삭제
+        if(session != null){
+            session.invalidate();
         }
-        return "redirect:/"; // 로그아웃 후 메인 페이지로 리다이렉트
+        return "redirect:/";
     }
 
-    // 로그인 처리 메소드
+
     @RequestMapping("/loginimpl")
     public String loginimpl(Model model,
                             @RequestParam("id") String id,
                             @RequestParam("pwd") String pwd,
                             HttpSession session) throws Exception {
-        log.info("ID:" + id);
-        log.info("PWD:" + pwd);
+        log.info("ID:"+id);
+        log.info("PWD:"+pwd);
         // aaa, 111
         String next = "index";
-        CustDto custDto = custService.get(id);
-        if(custDto == null) {
-            // fail
-            model.addAttribute("center", "loginfail");
-        } else {
-            // ok
-            if(custDto.getCustPwd().equals(pwd)) {
-                session.setAttribute("loginid", custDto);
+        CustDto custDto = null;
+        custDto = custService.get(id);
+        if(custDto == null){
+            // Fail
+            model.addAttribute("center","loginfail");
+        }else{
+            // OK
+            if(passwordEncoder.matches(pwd, custDto.getCustPwd())){
+                session.setAttribute("loginid",custDto);
                 next = "redirect:/";
-            } else {
-                model.addAttribute("center", "loginfail");
+            }else{
+                model.addAttribute("center","loginfail");
             }
         }
         return next;
     }
 
-    // 회원가입 처리 메소드
-    @RequestMapping("/signupimpl")
-    public String registerimpl(Model model, @RequestParam("id") String id, @RequestParam("pwd") String pwd,
-                               @RequestParam("name") String name, @RequestParam("email") String email) {
-        log.info("id : " + id);
-        log.info("pwd : " + pwd);
-        log.info("name : " + name);
-        log.info("email : " + email);
-        return "index"; // 회원가입 후 index 페이지로 이동
-    }
-
     @RequestMapping("/registerimpl")
-    public String registermpl(Model model, CustDto custDto,
-                              HttpSession session) throws DuplicateKeyException, Exception {
-        log.info("Cust Info : " + custDto.toString());
+    public String registerimpl(Model model,
+                               CustDto custDto,
+                               HttpSession session) throws DuplicateKeyException,Exception {
+        log.info("Cust Info: "+custDto.toString());
         try {
+            custDto.setCustPwd(passwordEncoder.encode(custDto.getCustPwd()));
             custService.add(custDto);
-        }catch (SQLIntegrityConstraintViolationException e) {
+        }catch(DuplicateKeyException e){
             throw e;
-        }catch (Exception e) {
+        } catch(Exception e){
             throw e;
         }
-        session.setAttribute("loginid", custDto);
-        model.addAttribute("center", "registerok");
-
+        session.setAttribute("loginid",custDto);
+        model.addAttribute("center","registerok");
         return "index";
     }
 }
-
