@@ -31,9 +31,5 @@ class Day03ApplicationTests {
         String encText = textEncoder.encrypt("서울시");
         log.info("text Encodint 1 : "+encText);
         log.info("text Encodint 1 : "+textEncoder.decrypt(encText));
-
-
-
     }
-
 }

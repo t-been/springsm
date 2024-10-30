@@ -38,10 +38,14 @@ logging:
 # 5. Application Environment Setting
 app:
   url:
-    server-url: http://172.16.21.91:81
+    server-url: http://127.0.0.1:81
+    #server-url: http://210.119.34.77:81
   dir:
     imgdir: file:///d:/springsm/imgs/
     uploadimgdir: d:/springsm/imgs/
     # logdir : /root/users/projects/logs/
     logdir: file:///d:/springsm/logs/
     readlogdir: d:/springsm/logs/
+  key:
+    algo: ENC(46veWcF/jurbzJW253V8KAaiYfuqUXdK0TJZl8qncvw=)
+    skey: ENC(XUGTCtIbo+egxzlX0lamkA==)
