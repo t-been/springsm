@@ -23,6 +23,11 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <%--HighCharts Lib  end --%>
 
+    <%-- Web Socket Lib --%>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
+
     <style>
         .fakeimg {
             height: 200px;
@@ -103,6 +108,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/webcam"/> ">WebCam</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/websocket"/> ">WebSocket</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<c:url value="/chat"/> ">Chat</a>
                 </li>
             </c:if>
         </ul>

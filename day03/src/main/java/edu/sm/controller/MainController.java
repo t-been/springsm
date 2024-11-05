@@ -23,9 +23,26 @@ public class MainController {
     @Value("${app.key.skey}")
     String sKey;
 
+    @Value("${app.url.server-url}")
+    String serverurl;
+
     @RequestMapping("/")
     public String main(Model model) {
         log.info("Start Main");
+        return "index";
+    }
+
+    @RequestMapping("/websocket")
+    public String webocket(Model model) {
+        model.addAttribute("serverurl", serverurl);
+        model.addAttribute("center", "websocket");
+        return "index";
+    }
+
+    @RequestMapping("/chat")
+    public String chat(Model model) {
+        model.addAttribute("serverurl", serverurl);
+        model.addAttribute("center", "chat");
         return "index";
     }
 

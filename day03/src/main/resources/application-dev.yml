@@ -37,6 +37,9 @@ logging:
 
 # 5. Application Environment Setting
 app:
+  url:
+    server-url: http://192.168.140.1:81
+    #server-url: http://210.119.34.77:81
   dir:
     imgdir: file:///d:/springsm/imgs/
     uploadimgdir: d:/springsm/imgs/
