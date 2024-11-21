@@ -1,6 +1,6 @@
 # 1. Tomcat Server Setting
 server:
-  port: 82
+  port: 80
   servlet:
     encoding:
       charset: UTF-8
@@ -14,13 +14,13 @@ spring:
       suffix: .jsp
   datasource:
     # 개발을 위해 사용
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/smdb?characterEncoding=utf8
+#    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/smdb?characterEncoding=utf8
     # 실제 사용을 할 때 사용
-    # driver-class-name: com.mysql.cj.jdbc.Driver
-    # url: jdbc:mysql://127.0.0.1:3306/smdb?characterEncoding=utf8
-    username: ENC(KLrGxHuSzkYAjJtdBnSRnw==)
-    password: ENC(Lr7PAAgjP+ywl9NhcHVtHg==)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://175.106.99.158:3306/smdb?characterEncoding=utf8
+    username: smuser
+    password: Smu1212!!
 
 # 3. Mybatis Setting
 mybatis:
@@ -38,17 +38,17 @@ logging:
 # 5. Application Environment Setting
 app:
   url:
-    server-url: http://192.168.140.1:81
-    #server-url: http://210.119.34.77:81
+    #server-url: http://175.106.99.158:81 # 네이버 서버 IP
+    server-url: http://192.168.140.1:81 #내 IP
+    #server-url: http://210.119.34.77:81 교수 IP
   dir:                                                                                                                                                                                                                                                 
-    imgdir: file:///d:/springsm/imgs/
-    uploadimgdir: d:/springsm/imgs/
+    imgdir: /root/imgs/
+    uploadimgdir: /root/imgs
     # logdir : /root/users/projects/logs/
-    logdir: file:///d:/springsm/logs/
-    readlogdir: d:/springsm/logs/
+    logdir: /root/logs/
+    readlogdir: root/logs/
   key:
     wkey: ENC(sO0RYc9SsKzeZhlWAhVfG89pwzID8Vd2TIgr5nn6dZ7OtoSfTWvQjQx67xnwrV1H87FmDExorAqegiULCB7zrHbBYMZudzmj608UPokuxVsZZB0TW96Q5kuzxWHUjVAvueWEtW5VTLP200IjM2ZEeA==)
     sKey: ENC(uIR9MvAsqOBs/2d1WXXmm1ow2utOAICfWDxEvtCvPNzqQMpUnOqZjsa/Iz1IftUB)
     algo: ENC(46veWcF/jurbzJW253V8KAaiYfuqUXdK0TJZl8qncvw=)
     skey: ENC(XUGTCtIbo+egxzlX0lamkA==)
-    kakao_rest_key: ENC(48iE4BCzpAWzxb1YNCJfTkoYZmTD3nsTKIaSIXZZHPje3RLwkNZAXy8E8iftZ9Nx)
