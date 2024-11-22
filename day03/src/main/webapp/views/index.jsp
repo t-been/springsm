@@ -23,17 +23,81 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <%--HighCharts Lib  end --%>
 
-    <%-- Web Socket Lib --%>
+    <%-- Web Socket Lib    --%>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-
 
     <style>
         .fakeimg {
             height: 200px;
             background: #aaa;
         }
+        .fakeimg {
+            height: 200px;
+            background: #aaa;
+        }
+        #scroll-btn {
+            opacity: 0;
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            background-color: #ef476f;
+            position: fixed;
+            bottom: 13%;
+            right: 10%;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            font: 2px monospace;
+            transition: opacity 2s, transform 2s;
+        }
+        #scroll-btn.show {
+            opacity: 1;
+            transition: opacity 5s, transform 5s;
+        }
+        #scroll-btn2 {
+            opacity: 0;
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            background-color: #ef476f;
+            position: fixed;
+            bottom: 5%;
+            right: 10%;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            font: bold 10px monospace;
+            transition: opacity 2s, transform 2s;
+        }
+        #scroll-btn2.show {
+            opacity: 1;
+            transition: opacity 5s, transform 5s;
+        }
     </style>
+    <script>
+        let chatbtn = {
+            init:function(){
+                const scrollBtn = document.createElement("button");
+                scrollBtn.innerHTML = "chatbot";
+                scrollBtn.setAttribute("id", "scroll-btn");
+                document.body.appendChild(scrollBtn);
+                scrollBtn.classList.add("show");
+                scrollBtn.addEventListener("click", function(){
+                    location.href='<c:url value="/chatbot"/>';
+                });
+                const scrollBtn2 = document.createElement("button");
+                scrollBtn2.innerHTML = "1:1";
+                scrollBtn2.setAttribute("id", "scroll-btn2");
+                document.body.appendChild(scrollBtn2);
+                scrollBtn2.classList.add("show");
+                scrollBtn2.addEventListener("click", function(){
+                    location.href='<c:url value="/websocket"/>';
+                });
+            }
+        };
+        $(function(){
+            chatbtn.init();
+        });
+    </script>
 </head>
 <body>
 
@@ -58,12 +122,6 @@
             </li>
         </c:when>
         <c:otherwise>
-<%--            <li class="nav-item">--%>
-<%--                <a class="nav-link" href="#">${sessionScope.loginid.custId}</a>--%>
-<%--            </li>--%>
-            <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/cart"/>">Cart</a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">${sessionScope.loginid.custId}</a>
             </li>
@@ -72,6 +130,7 @@
             </li>
         </c:otherwise>
     </c:choose>
+
 
 </ul>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -101,19 +160,13 @@
                     <a class="nav-link" href="<c:url value="/item"/> ">Item</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/car"/> ">Car</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/cart"/> ">Cart</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="<c:url value="/webcam"/> ">WebCam</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/websocket"/> ">WebSocket</a>
+                    <a class="nav-link" href="<c:url value="/websocket"/> ">websocket</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<c:url value="/chat"/> ">Chat</a>
+                    <a class="nav-link" href="<c:url value="/chat"/> ">chat</a>
                 </li>
             </c:if>
         </ul>
@@ -144,5 +197,6 @@
 <div class="jumbotron text-center" style="margin-bottom:0">
     <p>Footer</p>
 </div>
+
 </body>
 </html>

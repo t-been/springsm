@@ -39,6 +39,7 @@ logging:
 app:
   url:
     server-url: http://192.168.140.1:81
+    chatbot: https://3vd0tljt1i.apigw.ntruss.com/custom/v1/16308/666a97771dda26840dabd3b6e7f98189d7ea6fe4ea0d799e38296158475cc917
     #server-url: http://210.119.34.77:81
   dir:                                                                                                                                                                                                                                                 
     imgdir: file:///d:/springsm/imgs/
@@ -47,6 +48,7 @@ app:
     logdir: file:///d:/springsm/logs/
     readlogdir: d:/springsm/logs/
   key:
+    chatbot: aHF5dWtHV0hpcHpUa090WG54VGlkTXdwVmh3bnNvWGg=
     wkey: ENC(sO0RYc9SsKzeZhlWAhVfG89pwzID8Vd2TIgr5nn6dZ7OtoSfTWvQjQx67xnwrV1H87FmDExorAqegiULCB7zrHbBYMZudzmj608UPokuxVsZZB0TW96Q5kuzxWHUjVAvueWEtW5VTLP200IjM2ZEeA==)
     sKey: ENC(uIR9MvAsqOBs/2d1WXXmm1ow2utOAICfWDxEvtCvPNzqQMpUnOqZjsa/Iz1IftUB)
     algo: ENC(46veWcF/jurbzJW253V8KAaiYfuqUXdK0TJZl8qncvw=)
