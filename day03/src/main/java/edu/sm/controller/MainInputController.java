@@ -74,4 +74,6 @@ public class MainInputController {
         model.addAttribute("center","registerok");
         return "index";
     }
+
+
 }

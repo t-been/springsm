@@ -29,6 +29,13 @@ public class MainController {
 
         return "index";
     }
+    @RequestMapping("/webrtc")
+    public String wrbrtc(Model model){
+        model.addAttribute("serverurl",serverUrl);
+        model.addAttribute("roomId","1");
+        model.addAttribute("center","webrtc");
+        return "index";
+    }
     @RequestMapping("/websocket")
     public String websocket(Model model){
         model.addAttribute("serverurl",serverUrl);
